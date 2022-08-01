@@ -1,12 +1,11 @@
 import React from 'react'
 
-function ItemListContainer(greeting){
+function ItemListContainer({greeting}){{
     return (
-        <p>
+        <div>
             <p>Saludos {greeting}</p>
-        </p>
+        </div>
     )
-}
+}}
 
 export default ItemListContainer
-

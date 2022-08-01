@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "./components/Header";
 import ItemListContainer from "./components/ItemListContainer";
+import NavBar from "./components/NavBar";
+
 
 function App() {
     return (
@@ -8,10 +10,12 @@ function App() {
             <Header />
             <main>
                 <h1>Ciclopartes</h1>
-                <ItemListContainer />
+                <ItemListContainer greeting={"Amin"}  />
             </main>
             <footer>
-                <p>Footer</p>
+                <h2>Footer</h2>
+                <NavBar 
+                    type="footer" />
             </footer>
         </>
 
