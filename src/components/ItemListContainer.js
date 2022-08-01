@@ -3,7 +3,7 @@ import React from 'react'
 function ItemListContainer({greeting}){{
     return (
         <div>
-            <p>Saludos {greeting}</p>
+            <p>{greeting}</p>
         </div>
     )
 }}
