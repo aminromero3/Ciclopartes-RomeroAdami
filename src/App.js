@@ -12,9 +12,7 @@ function App() {
                 <h1>Ciclopartes</h1>
                 <ItemListContainer greeting={"Amin"}  />
             </main>
-            <footer>
-                <Footer />
-            </footer>
+            <Footer />
         </>
 
     )
