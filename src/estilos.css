@@ -9,6 +9,7 @@
     margin-right: 45px;
 }
 
-.rojo{
-    background: red;
+.borde{
+    border: 1px solid black;
 }
+
