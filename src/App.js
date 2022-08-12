@@ -10,7 +10,7 @@ function App() {
             <Header />
             <main>
                 <h1>Ciclopartes</h1>
-                <ItemListContainer greeting={"Amin"}  />
+                <ItemListContainer greeting={"Bienvenidos"}  />
             </main>
             <Footer />
         </>
