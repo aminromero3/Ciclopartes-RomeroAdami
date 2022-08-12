@@ -8,7 +8,6 @@ function Item({producto}) {
                 <h6>{producto.nombre}</h6>
                 <img src={producto.imagen} alt="" />
                 <p>${producto.precio}</p>
-                <p>{producto.descripcion}</p>
                 <button>Ver detalle</button>
             </div>
         </div>
