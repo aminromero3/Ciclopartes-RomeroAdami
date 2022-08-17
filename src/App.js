@@ -1,18 +1,17 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
-import ItemListContainer from "./components/ItemListContainer";
 import Footer from "./components/Footer";
-
+import Main from "./components/Main";
 
 function App() {
     return (
         <>
-            <Header />
-            <main>
-                <h1>Ciclopartes</h1>
-                <ItemListContainer greeting={"Bienvenidos"}  />
-            </main>
-            <Footer />
+            <BrowserRouter>
+                <Header />
+                <Main />
+                <Footer />
+            </BrowserRouter>
         </>
 
     )

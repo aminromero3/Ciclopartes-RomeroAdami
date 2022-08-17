@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemDetail from "./ItemDetail"
+import { useEffect, useState } from 'react'
 
 
 const getItem = () => { 
@@ -9,18 +10,18 @@ const getItem = () => {
             res({
                 id: 1,
                 nombre: "Bici de Ruta",
-                descripcion: "Bici de ruta de prueba, talle 54",
                 precio: 2500,
                 imagen: "./bici1.jpg",
+                descripcion: "Bici de ruta de montaña"
             })
         } , 2000)
-        Detail.then((item) => {
-            console.log("item: "+item)
-        }).catch((error) => {
-            console.log("error"+error)
-        }).finally(() => {
-            console.log("Termino el pedido")
-        } )
+    })
+    Detail.then((item) => {
+        return item
+    }).catch((error) => {
+        console.log("Termino el pedido mal: "+error)
+    }).finally(() => {
+        console.log("Termino el pedido")
     }, [])
     return Detail
 }
@@ -40,21 +41,21 @@ function ItemDetailContainer () {
             setItem(item)
             setLoading(false)
         }).catch((error) => {
-            console.log("Termino el pedido mal"+error)
+            console.log("Termino el pedido mal: "+error)
             setLoading(false)
         }).finally(() => {
-            console.log("Termino el pedido")
+            console.log("Termino el pedido"+detail)
             setLoading(false)
         })
-    }, [] )
-
+    } , [])
     if (loading) {
+        return (
             <>
-                <p>Cargando...</p>
+                <ItemDetail item={item} />
             </>
+        )
     } else {
         return (
-        
             <>
                 <ItemDetail item={item} />
             </>
@@ -63,3 +64,4 @@ function ItemDetailContainer () {
 }
 
 export default ItemDetailContainer
+export { getItem }

@@ -10,8 +10,8 @@ function ItemList(productos) {
                         return (
                             <Item key={producto.id} producto={producto} />
                         )
-                    }
-                    )}
+                    })}
+                    
                 </div>
             </section>
         </>

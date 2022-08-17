@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
-import ItemCount from "./ItemCount"
+
 
 const productosIniciales = [
     {
@@ -59,7 +59,6 @@ const ItemListContainer = () => {
                 <div className="">
                     <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3"></div>
                     <ItemList productos={productos} />
-                    <ItemCount stock="5" initial="1" />
                 </div>
             </div>
             </>
