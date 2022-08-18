@@ -5,14 +5,14 @@ import ItemList from "./ItemList"
 const productosIniciales = [
     {
         id: 1,
-        categoriaId: 1,
+        categoriaId: "ruta",
         nombre: "Bici de Ruta",
         precio: 2500,
         imagen: "./bici1.jpg",
     },
     {
         id: 2,
-        categoriaId: 2,
+        categoriaId: "paseo",
         nombre: "Bici de Paseo",
         precio: 1200,
         imagen: "./bici2.jpg",
