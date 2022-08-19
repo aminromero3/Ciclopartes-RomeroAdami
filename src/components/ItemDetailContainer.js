@@ -14,7 +14,7 @@ const getItem = () => {
                 imagen: "./bici1.jpg",
                 descripcion: "Bici de ruta de montaña"
             })
-        } , 2000)
+        } , 1000)
     })
     Detail.then((item) => {
         return item

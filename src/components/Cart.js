@@ -1,9 +1,9 @@
 import React from 'react'
 
 function Cart() {
+
   return (
-    <div>Carrito
-    </div>
+    <h2>Carrito</h2>
   )
 }
 

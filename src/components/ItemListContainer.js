@@ -32,7 +32,7 @@ const ItemListContainer = () => {
         const pedido = new Promise((res, rej) => {
             setTimeout(() => {
                 res(productosIniciales)
-            }, 2000)
+            }, 1000)
         })
         pedido.then((productos) => {
             setProductos(productos)
