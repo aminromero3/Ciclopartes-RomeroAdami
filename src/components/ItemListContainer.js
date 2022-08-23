@@ -1,52 +1,33 @@
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
+import { useParams } from "react-router-dom"
 
-
-const productosIniciales = [
-    {
-        id: 1,
-        categoriaId: "ruta",
-        nombre: "Bici de Ruta",
-        precio: 2500,
-        imagen: "./bici1.jpg",
-    },
-    {
-        id: 2,
-        categoriaId: "paseo",
-        nombre: "Bici de Paseo",
-        precio: 1200,
-        imagen: "./bici2.jpg",
-    },
-]
 
 
 const ItemListContainer = () => {
 
-    const [productos, setProductos] = useState([])
+    const [listProduct, setListProduct] = useState([])
     const [loading, setLoading] = useState(true)
 
+    const { category} = useParams()
+
+    
     useEffect(() => {
+        setLoading(true)
+        fetch('./arrayProductos.json')
+            .then(res => res.json())
+            .then(res => {
+                if(category){
+                    setLoading(false)
+                    setListProduct(res.filter(producto => producto.category === category))
+                }else{
+                    setLoading(false)
+                    setListProduct(res)
+                }
+            })
 
-        console.log("Arranca el pedido")
-
-        const pedido = new Promise((res, rej) => {
-            setTimeout(() => {
-                res(productosIniciales)
-            }, 1000)
-        })
-        pedido.then((productos) => {
-            setProductos(productos)
-            setLoading(false)
-        })
-        pedido.catch((error) => {
-            console.log("Termino el pedido mal"+error)
-            setLoading(false)
-        })
-        pedido.finally(() => {
-            console.log("Termino el pedido")
-            setLoading(false)
-        })
-    }, [])
+}, [category])
+    
     if (loading) {
         return (
             <>
@@ -60,11 +41,11 @@ const ItemListContainer = () => {
              <div className="album py-5 bg-light">
                 <div className="">
                     <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3"></div>
-                    <ItemList productos={productos} />
+                    <ItemList productos={listProduct} />
                 </div>
             </div>
             </>
         )
- }
+    }
 }
- export default ItemListContainer
+export default ItemListContainer
