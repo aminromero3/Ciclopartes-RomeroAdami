@@ -9,7 +9,7 @@ const ItemCount = ({ estadoPadre, customMethod ,stock, initial, onAdd }) => {
     
     initial = 1;
 
-    onAdd = () => {
+    const sumar = () => {
         if (stock === 0 || estadoHijo === stock) {
             console.log("No se puede incrementar");
         } else {
@@ -19,7 +19,7 @@ const ItemCount = ({ estadoPadre, customMethod ,stock, initial, onAdd }) => {
         }
     };
 
-    const onRemove = () => {
+    const restar = () => {
         if (estadoHijo === 0) {
             console.log("No se puede decrementar");
         } else {
@@ -35,9 +35,9 @@ const ItemCount = ({ estadoPadre, customMethod ,stock, initial, onAdd }) => {
     }
     return (
         <div className="container d-flex borde">
-            <button className="btn btn-outline-secondary" onClick={onRemove}>-</button>
+            <button className="btn btn-outline-secondary" onClick={sumar}>-</button>
             <p className="m-2">cantidad: {estadoHijo}</p>
-            <button className="btn btn-outline-secondary" onClick={onAdd}>+</button>
+            <button className="btn btn-outline-secondary" onClick={restar}>+</button>
 
             <Link to={"/cart"} className="btn btn-outline-secondary" onClick={comprar}>Comprar</Link>
         </div>

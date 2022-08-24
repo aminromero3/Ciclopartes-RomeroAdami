@@ -1,18 +1,23 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import ItemCount from './ItemCount'
-
+import { contexto } from './CartContext'
 
 
 function ItemDetail(item) {
 
-
-
-  //State Uplifting
   const [estadoPadre, setEstadoPadre] = useState(0)
 
   const customMethod = (param) => {
     setEstadoPadre(param)
+  }
+
+  const { agregarProducto } = useContext(contexto)
+
+  const onAdd = () => {
+    item.cantidad=estadoPadre
+    agregarProducto(item)
+    console.log("se compro "+estadoPadre+"elementos");
   }
 
   return (
@@ -22,7 +27,7 @@ function ItemDetail(item) {
               <img src={item.imagen} alt="" />
               <p>${item.precio}</p>
               <p>Descripcion: {item.descripcion}</p>
-              <ItemCount estadoPadre={estadoPadre} stock={5} customMethod={customMethod}/>
+              <ItemCount estadoPadre={estadoPadre} stock={5} onAdd={onAdd} customMethod={customMethod}/>
             </div>
     </div>
   )
