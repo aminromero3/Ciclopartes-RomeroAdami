@@ -1,12 +1,11 @@
 import React from "react";
-import { useState, useContext } from "react";
-import { contexto } from "./CartContext"
+import { useCarrito } from "./CartContext"
 import { NavLink } from "react-router-dom";
 
 
 function CartWidget() {
 
-    const { cantidad } = useContext(contexto)
+    const { cantidad } = useCarrito();
 
     return(
         <>

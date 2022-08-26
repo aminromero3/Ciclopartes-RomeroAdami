@@ -1,45 +1,44 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const ItemCount = ({ estadoPadre, customMethod ,stock, initial, onAdd }) => {
-    const [estadoHijo, setEstadoHijo] = useState(0)
-    const [confirmed, setConfirmed] = useState(false)
-
+const ItemCount = ({ stock, initial, onAdd }) => {
+    const [contador, setContador] = useState(0)
     
     initial = 1;
 
     const sumar = () => {
-        if (stock === 0 || estadoHijo === stock) {
+        if (stock === 0 || contador === stock) {
             console.log("No se puede incrementar");
         } else {
-            setEstadoHijo(estadoHijo + 1)
+            setContador(contador + 1)
             console.log("incrementando");
-            console.log(estadoHijo);
+            console.log(contador);
         }
     };
 
     const restar = () => {
-        if (estadoHijo === 0) {
+        if (contador === 0) {
             console.log("No se puede decrementar");
         } else {
-            setEstadoHijo(estadoHijo - 1)
+            setContador(contador - 1)
             console.log("decrementando");
-            console.log(estadoHijo);
+            console.log(contador);
         }
     };
 
     function comprar(){
-        customMethod(estadoHijo)
-        console.log("se compro "+estadoHijo+"elementos");
+        console.log("se compro "+contador+"elementos");
+        onAdd(contador)
+        
     }
     return (
         <div className="container d-flex borde">
-            <button className="btn btn-outline-secondary" onClick={sumar}>-</button>
-            <p className="m-2">cantidad: {estadoHijo}</p>
-            <button className="btn btn-outline-secondary" onClick={restar}>+</button>
+            <button className="btn btn-outline-secondary" onClick={restar}>-</button>
+            <p className="m-2">cantidad: {contador}</p>
+            <button className="btn btn-outline-secondary" onClick={sumar}>+</button>
 
-            <Link to={"/cart"} className="btn btn-outline-secondary" onClick={comprar}>Comprar</Link>
+            <button className="btn btn-outline-secondary" onClick={comprar}>Comprar</button>
         </div>
     );
 };

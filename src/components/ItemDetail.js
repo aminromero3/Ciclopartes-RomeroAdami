@@ -1,24 +1,18 @@
 import React from 'react'
-import { useState, useContext } from 'react'
+import { useCarrito } from './CartContext'
 import ItemCount from './ItemCount'
-import { contexto } from './CartContext'
-
+// import { contexto } from './CartContext'
 
 function ItemDetail(item) {
 
-  const [estadoPadre, setEstadoPadre] = useState(0)
+  const { agregarProducto } = useCarrito();
 
-  const customMethod = (param) => {
-    setEstadoPadre(param)
-  }
-
-  const { agregarProducto } = useContext(contexto)
-
-  const onAdd = () => {
-    item.cantidad=estadoPadre
+  const onAdd = (contador) => {
+    console.log("se compro "+contador+" elementos");
+    item.cantidad = contador
     agregarProducto(item)
-    console.log("se compro "+estadoPadre+"elementos");
-  }
+}
+
 
   return (
     <div className="card shadow-sm">
@@ -27,7 +21,7 @@ function ItemDetail(item) {
               <img src={item.imagen} alt="" />
               <p>${item.precio}</p>
               <p>Descripcion: {item.descripcion}</p>
-              <ItemCount estadoPadre={estadoPadre} stock={5} onAdd={onAdd} customMethod={customMethod}/>
+              <ItemCount onAdd={onAdd} />
             </div>
     </div>
   )

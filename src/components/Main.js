@@ -14,7 +14,7 @@ function Main() {
                 <Route path='/' element={<ItemListContainer />} />
                 <Route path='/item/:id' element={<ItemDetailContainer />} />
                 <Route path='/cart' element={<Cart/>}/>
-                <Route path='/categoria/:categoriaId' element={<ItemListContainer/>}/>
+                <Route path='/:category' element={<ItemListContainer/>}/>
                 {/* <Route path='/nosotros' element={<Nosotros/>}/>
                 <Route path='/contacto' element={<Contacto/>}/> 
                 <Route path='/ayuda' element={<Ayuda/>}/> */}

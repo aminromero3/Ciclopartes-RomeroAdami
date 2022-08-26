@@ -1,38 +1,38 @@
 import React from "react";
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const contexto = createContext(); //Aca va a "vivir" la data "global"
+export const contexto = createContext(); 
 
-const { Provider } = contexto; //Es un componente que nos sirve para hacer "global" el valor del contexto desde su aparicion 
-
+const { Provider } = contexto; 
+ 
+export const useCarrito = () => {
+    return useContext(contexto);
+}
 
 const CustomProvider = (props) => {
 
-    /* let cantidad = 0; */
     const [cantidad, setCantidad] = useState(0);
-    // const [carrito, setCarrito] = useState([]);
+    const [carrito, setCarrito] = useState([]);
 
     const agregarProducto = (producto) => {
-         //carrito.push()
-        //si estaEnCarrito() entonces..
         console.log("Soy el contexto!")
         console.log(producto)
         //cantidad = cantidad + producto.cantidad;
         setCantidad(cantidad + producto.cantidad)
     }
 
-    const eliminarProducto = () => {}
+    const eliminarProducto = () => {
+        
+    }
 
-    
-    // const vaciarCarrito = () => {
-    //     setCantidad(0)
-    //     setCarrito([])
-    // }
-
+    const vaciarCarrito = () => {
+        setCantidad(0)
+        setCarrito([])
+    }
 
     const valorDelContexto = {
         cantidad: cantidad,
-        carrito : [],
+        carrito : carrito,
         agregarProducto,
         eliminarProducto,
     }

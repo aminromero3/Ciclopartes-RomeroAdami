@@ -2,28 +2,38 @@ import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 
-
-
 const ItemListContainer = () => {
 
-    const [listProduct, setListProduct] = useState([])
+    const [listProduct, setListProduct] = useState({})
     const [loading, setLoading] = useState(true)
 
-    const { category} = useParams()
-
+    const { category } = useParams()
+    console.log("categoria:"+category)
     
     useEffect(() => {
         setLoading(true)
-        fetch('./arrayProductos.json')
-            .then(res => res.json())
+        fetch('./arrayProductos.json',{
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => {
+                console.log(response);
+                return response.json()
+            })
             .then(res => {
                 if(category){
                     setLoading(false)
                     setListProduct(res.filter(producto => producto.category === category))
+                    console.log("pasa esto 1"+res)
                 }else{
                     setLoading(false)
                     setListProduct(res)
+                    console.log("pasa esto 2"+res)
                 }
+                console.log("pasa esto 3"+res)
+
             })
 
 }, [category])

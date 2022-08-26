@@ -12,18 +12,18 @@ function ItemDetailContainer () {
     
     useEffect(() => {
         setLoading(true)
-        const pedido = fetch("./arrayProductos.json"+id)
+        const pedido = fetch("./arrayProductos.json")
         pedido.then(res => {
             return res.json()
         }).then(res => {
             setLoading(false)
-            setItem(res.find(item => item.id === parseInt(id)))
+            setItem(res.filter(item => item.id === parseInt(id)))
         }).catch(err => {
             console.log("erorr:"+err)
         }).finally(() => {
             console.log("Finalizo el pedido")
         })
-}, [])
+}, [id])
     if (loading) {
         return (
             <>
