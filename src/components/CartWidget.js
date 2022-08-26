@@ -7,17 +7,18 @@ function CartWidget() {
 
     const { cantidad } = useCarrito();
 
-    return(
-        <>
+    
+    if(cantidad > 0) {
+        return (
             <NavLink to="/cart">
-                <span className="material-symbols-outlined">
-                    shopping_cart
-                </span>
-                {cantidad}
+            <span className="material-symbols-outlined">
+                shopping_cart
+            </span>
+            {cantidad}
             </NavLink>
-            
-        </>
-    )
+        )
+    }
+
 }
 
 export default CartWidget;

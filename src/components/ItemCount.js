@@ -1,8 +1,9 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
+
     const [contador, setContador] = useState(0)
     
     initial = 1;
@@ -38,7 +39,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
             <p className="m-2">cantidad: {contador}</p>
             <button className="btn btn-outline-secondary" onClick={sumar}>+</button>
 
-            <button className="btn btn-outline-secondary" onClick={comprar}>Comprar</button>
+            <Link to={'/cart'} className="btn btn-outline-secondary" onClick={comprar}>Terminar mi compra</Link>
         </div>
     );
 };

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useCarrito } from './CartContext'
 import ItemCount from './ItemCount'
-// import { contexto } from './CartContext'
 
 function ItemDetail(item) {
 

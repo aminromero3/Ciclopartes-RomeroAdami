@@ -13,6 +13,8 @@ const CustomProvider = (props) => {
 
     const [cantidad, setCantidad] = useState(0);
     const [carrito, setCarrito] = useState([]);
+    const [total, setTotal] = useState(0);
+
 
     const agregarProducto = (producto) => {
         console.log("Soy el contexto!")
@@ -20,9 +22,11 @@ const CustomProvider = (props) => {
         //cantidad = cantidad + producto.cantidad;
         setCantidad(cantidad + producto.cantidad)
     }
+    const eliminarProducto = (id) => {
+        // eliminar el producto del carrito
+        setCantidad(cantidad - id.cantidad)
+        setCarrito(carrito.filter(producto => producto.id !== id))
 
-    const eliminarProducto = () => {
-        
     }
 
     const vaciarCarrito = () => {
@@ -36,7 +40,11 @@ const CustomProvider = (props) => {
         agregarProducto,
         eliminarProducto,
     }
-
+    const precioTotal = () => {
+        carrito.forEach(producto => {
+            setTotal(total + producto.precio * producto.cantidad)
+        } )
+    }
     return(
         <Provider value={valorDelContexto}>
             {props.children}
