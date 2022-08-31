@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 function CartWidget() {
 
     const { cantidad } = useCarrito();
-
+    console.log(cantidad);
     
     if(cantidad > 0) {
         return (

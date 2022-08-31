@@ -2,41 +2,35 @@ import React from 'react'
 import ItemDetail from "./ItemDetail"
 import { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
-
+import { db } from "./firebase"
+import { collection, getDoc, doc } from "firebase/firestore"
 
 function ItemDetailContainer () {
     const [item, setItem] = useState({})
-    const [loading, setLoading] = useState(true)
-
     const { id } = useParams()
     
     useEffect(() => {
-        setLoading(true)
-        const pedido = fetch("./arrayProductos.json")
-        pedido.then(res => {
-            return res.json()
-        }).then(res => {
-            setLoading(false)
-            setItem(res.filter(item => item.id === parseInt(id)))
-        }).catch(err => {
-            console.log("erorr:"+err)
-        }).finally(() => {
-            console.log("Finalizo el pedido")
-        })
+        
+        const productosCollection = collection(db, "products") // refecencia a la coleccion de productos
+        const referencia = doc(productosCollection, id)  //referencia a un documento
+        const consulta = getDoc(productosCollection, id) //promesa
+
+        consulta
+            .then((res)=>{
+                console.log(res.id)
+                console.log(res.data())
+                setItem(res.data())
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
 }, [id])
-    if (loading) {
-        return (
-            <>
-                <ItemDetail item={item} />
-            </>
-        )
-    } else {
-        return (
-            <>
-                <ItemDetail item={item} />
-            </>
-        )
-    }   
+   
+    return (
+        <>
+            <ItemDetail item={item} />
+        </>
+    ) 
 }
 
 export default ItemDetailContainer

@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
 import CustomProvider from "./components/CartContext";
+import "./components/firebase";
 
 function App() {
     return (

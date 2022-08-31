@@ -6,12 +6,11 @@ function ItemList(productos) {
         <>  
             <section>
                 <div className="row">
-                    {productos.productos.map((producto) => {
+                    {productos.productos.map(producto => {
                         return (
                             <Item key={producto.id} producto={producto} />
                         )
-                    })}
-                    
+                    } )}
                 </div>
             </section>
         </>

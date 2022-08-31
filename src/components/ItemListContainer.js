@@ -1,41 +1,73 @@
+import { collection, getDocs, query, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 
+import { db } from "./firebase"
+
+   
 const ItemListContainer = () => {
 
-    const [listProduct, setListProduct] = useState({})
+    const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
-
     const { category } = useParams()
+
     console.log("categoria:"+category)
     
     useEffect(() => {
-        setLoading(true)
-        fetch('./arrayProductos.json',{
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            }
-        })
-            .then(response => {
-                console.log(response);
-                return response.json()
-            })
-            .then(res => {
-                if(category){
-                    setLoading(false)
-                    setListProduct(res.filter(producto => producto.category === category))
-                    console.log("pasa esto 1"+res)
-                }else{
-                    setLoading(false)
-                    setListProduct(res)
-                    console.log("pasa esto 2"+res)
-                }
-                console.log("pasa esto 3"+res)
 
-            })
+        const productosCollection = collection(db, "products")
 
+        if(!category){
+            const productos= getDocs(productosCollection)
+
+            productos
+                .then(snapshot => {
+                    // objeto con ID
+                    // console.log(snapshot.docs)
+                    // objeto completo sin ID
+                    // console.log(snapshot.docs.map(doc => doc.data()))
+                    // objeto completo con ID
+                    console.log(snapshot.docs.map(doc => {
+                        return {
+                            ...doc.data(),
+                            id: doc.id
+                        }
+
+                    }))
+                    setProductos(productos)
+                    // setLoading(false)
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+
+        }else{
+            const filtro = query(productosCollection, where("category","==",category))
+            const consulta = getDocs(filtro)
+
+            
+            consulta
+                .then(snapshot => {
+                    // objeto con ID
+                    // console.log(snapshot.docs)
+                    // objeto completo sin ID
+                    // console.log(snapshot.docs.map(doc => doc.data()))
+                    // objeto completo con ID
+                    console.log(snapshot.docs.map(doc => {
+                        return {
+                            ...doc.data(),
+                            id: doc.id
+                        }
+
+                    }))
+                    setProductos(productos)
+                    // setLoading(false)
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+        }
 }, [category])
     
     if (loading) {
@@ -51,7 +83,7 @@ const ItemListContainer = () => {
              <div className="album py-5 bg-light">
                 <div className="">
                     <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3"></div>
-                    <ItemList productos={listProduct} />
+                    <ItemList productos={productos} />
                 </div>
             </div>
             </>

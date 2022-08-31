@@ -6,7 +6,6 @@ function Cart() {
   
   const {carrito, vaciarCarrito, eliminarProducto, precioTotal} = useCarrito();
 
-
   return (
     <>
       <h2>Carrito</h2>
