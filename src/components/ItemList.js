@@ -1,19 +1,16 @@
 import React from 'react'
 import Item from './Item'
 
-function ItemList(productos) {
+function ItemList({productos}) {
+    
     return (
-        <>  
-            <section>
-                <div className="row">
-                    {productos.productos.map(producto => {
-                        return (
-                            <Item key={producto.id} producto={producto} />
-                        )
-                    } )}
-                </div>
-            </section>
-        </>
+        <section>
+            <div className="row">
+            {productos.map((producto) => {
+                return <Item key={producto.id} producto={producto}/>
+            })}
+            </div>
+        </section>
     )
 }
 

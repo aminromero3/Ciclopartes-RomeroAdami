@@ -2,7 +2,7 @@ import { collection, getDocs, query, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
-
+import React from 'react'
 import { db } from "./firebase"
 
    
@@ -23,46 +23,33 @@ const ItemListContainer = () => {
 
             productos
                 .then(snapshot => {
-                    // objeto con ID
-                    // console.log(snapshot.docs)
-                    // objeto completo sin ID
-                    // console.log(snapshot.docs.map(doc => doc.data()))
-                    // objeto completo con ID
-                    console.log(snapshot.docs.map(doc => {
+                    const productos = snapshot.docs.map(doc => {
                         return {
                             ...doc.data(),
                             id: doc.id
                         }
-
-                    }))
+                    })
                     setProductos(productos)
-                    // setLoading(false)
+                    setLoading(false)
                 })
                 .catch(err=>{
                     console.log(err)
                 })
-
         }else{
             const filtro = query(productosCollection, where("category","==",category))
             const consulta = getDocs(filtro)
 
-            
             consulta
                 .then(snapshot => {
-                    // objeto con ID
-                    // console.log(snapshot.docs)
-                    // objeto completo sin ID
-                    // console.log(snapshot.docs.map(doc => doc.data()))
-                    // objeto completo con ID
-                    console.log(snapshot.docs.map(doc => {
+                    const productos = snapshot.docs.map(doc => {
                         return {
                             ...doc.data(),
                             id: doc.id
                         }
 
-                    }))
+                    })
                     setProductos(productos)
-                    // setLoading(false)
+                    setLoading(false)
                 })
                 .catch(err=>{
                     console.log(err)
@@ -80,12 +67,14 @@ const ItemListContainer = () => {
     } else {
         return (
             <>
-             <div className="album py-5 bg-light">
-                <div className="">
-                    <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3"></div>
-                    <ItemList productos={productos} />
+                <div className="album py-5 bg-light">
+                    <div className="">
+                    <React.StrictMode>
+                        <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3"></div>
+                            <ItemList productos={productos} />
+                    </React.StrictMode>
+                    </div>
                 </div>
-            </div>
             </>
         )
     }

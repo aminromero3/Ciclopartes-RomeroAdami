@@ -13,12 +13,10 @@ function ItemDetailContainer () {
         
         const productosCollection = collection(db, "products") // refecencia a la coleccion de productos
         const referencia = doc(productosCollection, id)  //referencia a un documento
-        const consulta = getDoc(productosCollection, id) //promesa
+        const consulta = getDoc(referencia) //promesa
 
         consulta
             .then((res)=>{
-                console.log(res.id)
-                console.log(res.data())
                 setItem(res.data())
             })
             .catch((err)=>{
