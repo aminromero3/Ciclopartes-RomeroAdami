@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route } from 'react-router-dom'
 import ItemListContainer from "./ItemListContainer";
 import ItemDetailContainer from "./ItemDetailContainer";
 import Cart from './Cart';
@@ -7,7 +7,9 @@ import Cart from './Cart';
 // import Contacto from './Contacto';
 // import Ayuda from './Ayuda';
 
+
 function Main() {
+ 
   return (
         <main>
             <Routes>

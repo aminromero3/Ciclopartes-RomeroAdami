@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Item = ({ producto }) => {
   return (
@@ -10,7 +10,8 @@ const Item = ({ producto }) => {
                 <img src={producto.image} alt="" />
                 <p>{producto.description}</p>
                 <p>${producto.price}</p>
-                <Link to={`/item/${producto.id}`}  className="btn btn-primary">Ver detalle</Link>
+                <NavLink to={`/item/${producto.id}`} className="btn btn-primary">Ver detalle</NavLink>
+                
             </div>
         </div>
       </div>

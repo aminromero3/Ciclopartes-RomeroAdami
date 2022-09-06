@@ -11,16 +11,18 @@ function ItemDetailContainer () {
     
     useEffect(() => {
         
-        const productosCollection = collection(db, "products") // refecencia a la coleccion de productos
-        const referencia = doc(productosCollection, id)  //referencia a un documento
-        const consulta = getDoc(referencia) //promesa
+        const productosCollection = collection(db, "products") //CollectionReference
+        const referencia = doc(productosCollection,id) //DocumentReference
+        const consulta = getDoc(referencia) //Promise
 
         consulta
             .then((res)=>{
-                setItem(res.data())
+                const producto = res.data()
+                setItem(producto)
+                console.log(res.data())
             })
             .catch((err)=>{
-                console.log(err)
+                console.log("error: "+err)
             })
 }, [id])
    

@@ -16,9 +16,9 @@ function Cart() {
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
 
-  const {carrito, vaciarCarrito, eliminarProducto, precioTotal} = useCarrito();
-
- 
+  const {carrito, vaciarCarrito, eliminarProducto, obtenerPreciototal} = useCarrito();
+  
+  console.log(carrito);
   const nombreCompleto = `${nombre} ${apellido}`;
 
   const handleChangeNombre = (e) => {
@@ -49,7 +49,7 @@ function Cart() {
   const handleConfirm = () => {
     const orden= {
       items: carrito,
-      total : precioTotal,
+      total : 300,
       buyer : {
         name : nombreCompleto,
         phone : telefono,
@@ -69,51 +69,58 @@ function Cart() {
         console.log(error)
       })
   }
+    
   return (
     <>
-      <h2>Carrito</h2>
-      
-        <table id="tablaCarrito" className="table table-striped m-5">
+     <table id="tablaCarrito" className="table table-striped m-5">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Id</th>
                 <th scope="col">Item</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Accion</th>
             </tr>
-        </thead>
-        <tbody id="bodyTabla">
-        {carrito.map(item => (
+      </thead>
+      {carrito.map((item) => {
+        return (
+          <tbody key={item} id="bodyTabla">
             <tr>
-                <th scope="row">Total: ${precioTotal}</th>
-                <td>{item.id}</td>
-                <td>{item.nombre}</td>
+                <th scope="row">1</th>
+                <td>{item.title}</td>
                 <td>{item.cantidad}</td>
-                <td>{item.precio}</td>
-                <td><button onClick={eliminarProducto(item.id)}>Eliminar</button></td>
+                <td>{item.price}</td>
+                <td><button onClick={() => eliminarProducto(item.id)} className="btn btn-danger">Eliminar</button></td>
             </tr>
-      ))}
-      </tbody>
+          </tbody>
+        )
+      })}
+      <tr>
+                <th scope="row"></th>
+                <td> </td>
+                <td> </td>
+                <td>Total: ${ () =>obtenerPreciototal(carrito)} </td>
+                <td> </td>
+            </tr>
       </table>
       <button onClick={vaciarCarrito}>Vaciar carrito</button>
       <Link to={'/'} className="btn btn-primary">volver a inicio</Link>
 
       <Page titulo="Carrito" subtitulo="Compra y vende">
 
-      <input type="text" placeholder="Nombre" onChange={handleChangeNombre} value={nombre} />
-      <input type="text" placeholder="Apellido" onChange={handleChangeApellido} value={apellido} />
-      <input type="text" placeholder="Email" onChange={handleChangeEmail} value={email} />
-      <input type="text" placeholder="Telefono" onChange={handleChangeTelefono} value={telefono} />
+          <input type="text" placeholder="Nombre" onChange={handleChangeNombre} value={nombre} />
+          <input type="text" placeholder="Apellido" onChange={handleChangeApellido} value={apellido} />
+          <input type="text" placeholder="Email" onChange={handleChangeEmail} value={email} />
+          <input type="text" placeholder="Telefono" onChange={handleChangeTelefono} value={telefono} />
 
-      <button onClick={handleConfirm}>guardar</button>
+          <button onClick={handleConfirm}>guardar</button>
 
-      <List usuarios={usuarios} />
+          <List usuarios={usuarios} />
 
       </Page>
     </>
-  )
-}
+    )
+
+  }
 
 export default Cart

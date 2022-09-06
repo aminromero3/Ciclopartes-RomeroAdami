@@ -12,15 +12,14 @@ function ItemDetail({item}) {
     agregarProducto(item)
 }
 
-
   return (
     <div className="card shadow-sm">
           <div className="card-body m-5">
-            <h6>Nombre: {item.nombre}</h6>
-            <img src={item.imagen} alt="" />
-            <p>${item.precio}</p>
-            <p>{item.descripcion}</p>
-            <ItemCount onAdd={onAdd} />
+              <h6>{item.title}</h6>
+              <img src={item.image} alt="" />
+              <p>{item.description}</p>
+              <p>${item.price}</p>
+              <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
           </div>
       </div>
   )

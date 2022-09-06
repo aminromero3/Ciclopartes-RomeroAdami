@@ -69,10 +69,8 @@ const ItemListContainer = () => {
             <>
                 <div className="album py-5 bg-light">
                     <div className="">
-                    <React.StrictMode>
                         <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3"></div>
                             <ItemList productos={productos} />
-                    </React.StrictMode>
                     </div>
                 </div>
             </>

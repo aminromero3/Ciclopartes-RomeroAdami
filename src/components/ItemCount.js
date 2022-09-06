@@ -38,8 +38,9 @@ const ItemCount = ({ stock, initial, onAdd }) => {
             <button className="btn btn-outline-secondary" onClick={restar}>-</button>
             <p className="m-2">cantidad: {contador}</p>
             <button className="btn btn-outline-secondary" onClick={sumar}>+</button>
-
-            <Link className="btn btn-outline-secondary" onClick={comprar}>Terminar mi compra</Link>
+            {/* Si el contador es mayor a 0, mostraremos un boton para terminar la compra */}
+            {contador > 0 ? <button className="btn btn-outline-secondary" onClick={comprar}>Agregar al carrito</button>: null}
+            {contador > 0 ? <Link to="/cart"><button className="btn btn-outline-secondary" onClick={comprar}>Terminar compra</button></Link> : null}
         </div>
     );
 };
