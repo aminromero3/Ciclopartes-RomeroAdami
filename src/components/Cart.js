@@ -16,7 +16,7 @@ function Cart() {
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
 
-  const {carrito, vaciarCarrito, eliminarProducto, obtenerPreciototal} = useCarrito();
+  const {carrito, total, vaciarCarrito, eliminarProducto, precioTotal} = useCarrito();
   
   console.log(carrito);
   const nombreCompleto = `${nombre} ${apellido}`;
@@ -71,54 +71,51 @@ function Cart() {
   }
     
   return (
-    <>
-     <table id="tablaCarrito" className="table table-striped m-5">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Item</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Accion</th>
-            </tr>
-      </thead>
-      {carrito.map((item) => {
-        return (
-          <tbody key={item} id="bodyTabla">
-            <tr>
-                <th scope="row">1</th>
-                <td>{item.title}</td>
-                <td>{item.cantidad}</td>
-                <td>{item.price}</td>
-                <td><button onClick={() => eliminarProducto(item.id)} className="btn btn-danger">Eliminar</button></td>
-            </tr>
-          </tbody>
-        )
-      })}
-      <tr>
-                <th scope="row"></th>
-                <td> </td>
-                <td> </td>
-                <td>Total: ${ () =>obtenerPreciototal(carrito)} </td>
-                <td> </td>
-            </tr>
-      </table>
-      <button onClick={vaciarCarrito}>Vaciar carrito</button>
-      <Link to={'/'} className="btn btn-primary">volver a inicio</Link>
+    <div>
+      <table id="tablaCarrito" className="table table-striped m-5">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Accion</th>
+              </tr>
+        </thead>
+        {carrito.map((item) => {
+          return (
+            <tbody key={item} id="bodyTabla">
+              <tr>
+                  <th scope="row">#</th>
+                  <td>{item.title}</td>
+                  <td>{item.cantidad}</td>
+                  <td>{item.price * item.cantidad}</td>
+                  <td><button onClick={() => eliminarProducto(item.id)} className="btn btn-danger">Eliminar</button></td>
+              </tr>
+            </tbody>
+          )
+        })}        
+        </table>
 
-      <Page titulo="Carrito" subtitulo="Compra y vende">
+        <p>Total: {precioTotal()}</p>
+        <button onClick={vaciarCarrito}>Vaciar carrito</button>
+        <Link to={'/'} className="btn btn-primary">volver a inicio</Link>
+        <button className="btn btn-outline-secondary" >Finalizar compra</button>
 
-          <input type="text" placeholder="Nombre" onChange={handleChangeNombre} value={nombre} />
-          <input type="text" placeholder="Apellido" onChange={handleChangeApellido} value={apellido} />
-          <input type="text" placeholder="Email" onChange={handleChangeEmail} value={email} />
-          <input type="text" placeholder="Telefono" onChange={handleChangeTelefono} value={telefono} />
 
-          <button onClick={handleConfirm}>guardar</button>
+        <Page titulo="Carrito" subtitulo="Compra y vende">
 
-          <List usuarios={usuarios} />
+            <input type="text" placeholder="Nombre" onChange={handleChangeNombre} value={nombre} />
+            <input type="text" placeholder="Apellido" onChange={handleChangeApellido} value={apellido} />
+            <input type="text" placeholder="Email" onChange={handleChangeEmail} value={email} />
+            <input type="text" placeholder="Telefono" onChange={handleChangeTelefono} value={telefono} />
 
-      </Page>
-    </>
+            <button onClick={handleConfirm}>Guardar</button>
+
+            <List usuarios={usuarios} />
+
+        </Page>
+      </div>
     )
 
   }

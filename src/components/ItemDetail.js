@@ -7,7 +7,6 @@ function ItemDetail({item}) {
   const { agregarProducto } = useCarrito();
 
   const onAdd = (contador) => {
-    console.log("se compro "+contador+" elementos");
     item.cantidad = contador
     agregarProducto(item)
 }

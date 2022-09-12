@@ -13,7 +13,7 @@ function CartWidget() {
             <NavLink to="/cart">
             <span className="material-symbols-outlined">
                 shopping_cart
-            </span>
+            </span> 
             {cantidad}
             </NavLink>
         )

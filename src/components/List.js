@@ -1,9 +1,6 @@
 import { memo } from "react"
 
 const List = ({ usuarios }) => {
-
-    console.log("Render")
-
     return (
         <section>
             <h2>Lista de usuarios</h2>
