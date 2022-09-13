@@ -1,15 +1,13 @@
 import React from 'react'
-
 import { useCarrito } from "./CartContext"
 
-function Login() {
+function Checkout() {
 
     const { 
         carrito, 
         cantidad,
         nombre, 
         apellido, 
-        usuarios, 
         email, 
         telefono, 
         precioTotal,
@@ -20,8 +18,6 @@ function Login() {
         handleConfirm,
     } = useCarrito();
 
-    console.log(carrito);
-    
   return (
     <div className='containerForm'>
         <div className='row g-5'>
@@ -49,13 +45,6 @@ function Login() {
                     <strong>${precioTotal()}</strong>
                 </li>
                 </ul>
-
-                <form className="card p-2">
-                <div className="input-group">
-                    <input type="text" className="form-control" placeholder="Promo code"/>
-                    <button type="submit" className="btn btn-secondary">Redeem</button>
-                </div>
-                </form>
             </div>
             {/* form */}
             <div className='col-md-7 col-lg-8'>
@@ -77,7 +66,7 @@ function Login() {
                             <label className='form-label'>Telefono</label>
                             <input type="text" className="form-control" id="telefono" aria-describedby="emailHelp" onChange={handleChangeTelefono} value={telefono} placeholder="Nombre" required/>
                         </div>                       
-                        <button type="submit" className="btn btn-primary" onClick={handleConfirm}>Finalizar compra</button>
+                        <button className="btn btn-primary" onClick={handleConfirm}>Finalizar compra</button>
                     </div>
                 </form>
             </div>
@@ -86,4 +75,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Checkout;

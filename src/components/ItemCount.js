@@ -39,7 +39,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         
     }
     return (
-        <div className="container d-flex borde">
+        <div className="container d-flex ">
             <button className="btn btn-outline-secondary" onClick={restar}>-</button>
             <p className="m-2">cantidad: {contador}</p>
             <button className="btn btn-outline-secondary" onClick={sumar}>+</button>

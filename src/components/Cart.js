@@ -34,9 +34,10 @@ function Cart() {
         </table>
 
         <p>Total: {precioTotal()}</p>
-        <button onClick={vaciarCarrito}>Vaciar carrito</button>
+        {carrito.length > 0 ? <button onClick={vaciarCarrito} className="btn btn-danger">Vaciar Carrito</button> : null}
         <Link to={'/'} className="btn btn-primary">volver a inicio</Link>
-        <Link to={'/login'} className="btn btn-outline-secondary" >Finalizar compra</Link>
+        {/* Si el carrito esta vacio, no se mostrara finalizar compra */}
+        {carrito.length > 0 ? <Link to={'/checkout'} className="btn btn-primary">Finalizar compra</Link> : null}
         
       </div>
     )
