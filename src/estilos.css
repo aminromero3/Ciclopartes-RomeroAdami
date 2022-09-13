@@ -1,7 +1,6 @@
 .logoHeader{
     height: 45px;
     margin-right: 25px;
-
 }
 
 .cart{
@@ -11,4 +10,15 @@
 
 .borde{
     border: 1px solid black;
+}
+
+.containerForm{
+    max-width: 960px;
+    margin: 50px auto;
+    padding: 0 15px;
+}
+
+.imageCart{
+    height: 45px;
+    margin-right: 25px;
 }

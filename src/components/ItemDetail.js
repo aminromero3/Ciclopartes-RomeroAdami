@@ -15,7 +15,7 @@ function ItemDetail({item}) {
     <div className="card shadow-sm">
           <div className="card-body m-5">
               <h6>{item.title}</h6>
-              <img src={item.image} alt="" />
+              <img src={item.image} alt={item.title} />
               <p>{item.description}</p>
               <p>${item.price}</p>
               <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
