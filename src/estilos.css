@@ -1,3 +1,4 @@
+
 .logoHeader{
     height: 45px;
     margin-right: 25px;
@@ -21,4 +22,20 @@
 .imageCart{
     height: 45px;
     margin-right: 25px;
+}
+.tableCart{
+    max-width: 960px;
+    margin: 50px auto;
+}
+
+.tableCartItems{
+    margin: auto;
+}
+
+.buttonsCart{
+    margin: 10px;
+}
+
+.price{
+    margin-right: 20%;
 }

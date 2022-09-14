@@ -4,40 +4,36 @@ import { useCarrito } from "./CartContext"
 
 function Cart() {
 
-  const {carrito, vaciarCarrito, eliminarProducto, precioTotal} = useCarrito();
+  const {carrito, cantidad ,vaciarCarrito, eliminarProducto, precioTotal} = useCarrito();
   
   return (
-    <div>
-      <table id="tablaCarrito" className="table table-striped m-5">
-          <thead>
-              <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Item</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Accion</th>
-              </tr>
-        </thead>
-        {carrito.map((item) => {
-          return (
-            <tbody key={item} id="bodyTabla">
-              <tr>
-                  <th scope="row"></th>
-                  <td>{item.title}</td>
-                  <td>{item.cantidad}</td>
-                  <td>{item.price * item.cantidad}</td>
-                  <td><button onClick={() => eliminarProducto(item.id)} className="btn btn-danger">Eliminar</button></td>
-              </tr>
-            </tbody>
-          )
-        })}        
-        </table>
-
-        <p>Total: {precioTotal()}</p>
-        {carrito.length > 0 ? <button onClick={vaciarCarrito} className="btn btn-danger">Vaciar Carrito</button> : null}
-        <Link to={'/'} className="btn btn-primary">volver a inicio</Link>
+    <div className='tableCart'>
+        <div className="col-md-8 col-lg-11 order-md-last">
+                <h4 className="d-flex justify-content-between align-items-center mb-3">
+                    <span className="text-primary">Tu Carrito</span>
+                </h4>
+                <ul className="list-group mb-3">
+                    {carrito.map((item) => {
+                        return (
+                            <li key={item} className="list-group-item d-flex justify-content-between lh-sm" >
+                                <img className='imageCart' src={item.image} alt={item.title} />
+                                <h6 className="tableCartItems">{item.title}</h6>
+                                <small className="text-muted tableCartItems">{item.cantidad}</small>
+                                <span className="text-muted tableCartItems">${item.price * item.cantidad}</span>
+                                <button onClick={() => eliminarProducto(item.id)} className="btn btn-danger">Eliminar</button>
+                            </li>
+                        )
+                    })}
+                  <li className="list-group-item d-flex justify-content-between">
+                      <span>Total:</span>
+                      <strong className='price'>${precioTotal()}</strong>
+                  </li>
+                </ul>
+            </div>
+        {carrito.length > 0 ? <button onClick={vaciarCarrito} className="btn btn-danger buttonsCart">Vaciar Carrito</button> : null}
+        <Link to={'/'} className="btn btn-primary buttonsCart">volver a inicio</Link>
         {/* Si el carrito esta vacio, no se mostrara finalizar compra */}
-        {carrito.length > 0 ? <Link to={'/checkout'} className="btn btn-primary">Finalizar compra</Link> : null}
+        {carrito.length > 0 ? <Link to={'/checkout'} className="btn btn-primary buttonsCart">Finalizar compra</Link> : null}
         
       </div>
     )
