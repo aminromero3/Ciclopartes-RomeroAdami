@@ -39,3 +39,11 @@
 .price{
     margin-right: 20%;
 }
+
+.detailContainer{
+    width: auto;
+    max-width: 960px;
+    margin: 50px auto;
+    padding: 0 15px;
+    border: 1px solid black;
+}

@@ -12,13 +12,19 @@ function ItemDetail({item}) {
 }
 
   return (
-    <div className="card shadow-sm">
-          <div className="card-body m-5">
-              <h6>{item.title}</h6>
+    <div className='detailContainer '>
+          <div className='d-flex'>
               <img src={item.image} alt={item.title} />
-              <p>{item.description}</p>
-              <p>${item.price}</p>
-              <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+              <div>
+                <h6>{item.title}</h6>
+                
+                <p>${item.price}</p>
+                <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+              </div>
+              <div>
+                <p>{item.description}</p>
+              </div>
+               
           </div>
       </div>
   )
