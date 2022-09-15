@@ -4,7 +4,7 @@ import { useCarrito } from "./CartContext"
 
 function Cart() {
 
-  const {carrito, cantidad ,vaciarCarrito, eliminarProducto, precioTotal} = useCarrito();
+  const {carrito, vaciarCarrito, eliminarProducto, precioTotal} = useCarrito();
   
   return (
     <div className='tableCart'>
@@ -29,7 +29,7 @@ function Cart() {
                       <strong className='price'>${precioTotal()}</strong>
                   </li>
                 </ul>
-            </div>
+        </div>
         {carrito.length > 0 ? <button onClick={vaciarCarrito} className="btn btn-danger buttonsCart">Vaciar Carrito</button> : null}
         <Link to={'/'} className="btn btn-primary buttonsCart">volver a inicio</Link>
         {/* Si el carrito esta vacio, no se mostrara finalizar compra */}

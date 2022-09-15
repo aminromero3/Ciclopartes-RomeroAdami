@@ -66,14 +66,13 @@ const ItemListContainer = () => {
         )
     } else {
         return (
-            <>
-                <div className="album py-5 bg-light">
-                    <div className="">
-                        <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3"></div>
-                            <ItemList productos={productos} />
+            <div className="album py-5 bg-light">
+                <div className="container-sm container-md">
+                    <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
+                        <ItemList productos={productos} />
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }

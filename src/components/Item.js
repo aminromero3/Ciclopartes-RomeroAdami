@@ -5,14 +5,15 @@ const Item = ({ producto }) => {
   return (
       <div className="col">
         <div className="card shadow-sm">
-            <div className="card-body">
-                <h6>{producto.title}</h6>
-                <img src={producto.image} alt="" />
-                <p>{producto.description}</p>
-                <p>${producto.price}</p>
-                <NavLink to={`/item/${producto.id}`} className="btn btn-primary">Ver detalle</NavLink>
-                
-            </div>
+          <img src={producto.image} alt={producto.title} className='bd-placeholder-img img-fluid card-img-top' width='100%'/>
+          <div className='m-3'>
+            <h6>{producto.title}</h6>
+            <p className='card-text'>{producto.description}</p>
+            <strong>${producto.price}</strong>
+          </div> 
+          <div className='btn-group'>
+            <NavLink to={`/item/${producto.id}`} className="btn m-4 btn-dark">Ver detalle</NavLink>
+          </div>
         </div>
       </div>
     )
