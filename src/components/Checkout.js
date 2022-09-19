@@ -19,21 +19,18 @@ function Checkout() {
         const input = e.target
         const value = input.value
         setNombre(value)
-        console.log(nombre)
     }
 
     const handleChangeApellido = (e) => {
         const input = e.target
         const value = input.value
         setApellido(value)
-        console.log(apellido)
     }
 
     const handleChangeEmail = (e) => {
         const input = e.target
         const value = input.value
         setEmail(value)
-        console.log(email)
     }
 
     const handleChangeTelefono = (e) => {
