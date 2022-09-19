@@ -30,11 +30,10 @@ function Cart() {
                   </li>
                 </ul>
         </div>
-        {carrito.length > 0 ? <button onClick={vaciarCarrito} className="btn btn-danger buttonsCart">Vaciar Carrito</button> : null}
-        <Link to={'/'} className="btn btn-primary buttonsCart">volver a inicio</Link>
-        {/* Si el carrito esta vacio, no se mostrara finalizar compra */}
-        {carrito.length > 0 ? <Link to={'/checkout'} className="btn btn-primary buttonsCart">Finalizar compra</Link> : null}
+        <Link to={'/'} className="btn btn-primary buttonsCart">Volver a inicio</Link>
         
+        {carrito.length > 0 ? <Link to={'/checkout'} className="btn btn-primary buttonsCart">Finalizar compra</Link> : null}
+        {carrito.length > 0 ? <button onClick={vaciarCarrito} className="btn btn-danger buttonsCart">Vaciar Carrito</button> : null}
       </div>
     )
 

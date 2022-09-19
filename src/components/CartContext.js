@@ -1,7 +1,5 @@
 import React from "react";
 import { createContext, useContext, useState } from "react";
-import { db } from "./firebase"
-import { collection, addDoc , serverTimestamp } from "firebase/firestore";
 
 export const contexto = createContext(); 
 
@@ -12,64 +10,9 @@ export const useCarrito = () => {
 }
 
 const CustomProvider = (props) => {
-    const [nombre, setNombre] = useState("");
-    const [apellido, setApellido] = useState("");
-    const nombreCompleto = `${nombre} ${apellido}`;
-    const [email, setEmail] = useState("");
-    const [telefono, setTelefono] = useState("");
+   
     const [cantidad, setCantidad] = useState(0);
     const [carrito, setCarrito] = useState([]);
-
-
-    const handleChangeNombre = (e) => {
-        e.preventDefault()
-        const input = e.target
-        const value = input.value
-        setNombre(value)
-        console.log(nombre)
-    }
-
-    const handleChangeApellido = (e) => {
-        const input = e.target
-        const value = input.value
-        setApellido(value)
-        console.log(apellido)
-    }
-
-    const handleChangeEmail = (e) => {
-        const input = e.target
-        const value = input.value
-        setEmail(value)
-        console.log(email)
-    }
-
-    const handleChangeTelefono = (e) => {
-        const input = e.target
-        const value = input.value
-        setTelefono(value)
-    }
-
-    const handleConfirm = () => {
-        const orden= {
-            items: carrito,
-            total : precioTotal(),
-            buyer : {
-                name : nombreCompleto,
-                phone : telefono,
-                email : email,
-            },
-            date : serverTimestamp()
-        }
-
-        const ordersCollection = collection(db, "orders")
-        const consulta = addDoc(ordersCollection, orden)
-
-        consulta
-            .then((res)=>{
-            })
-            .catch(error => {
-            })
-    }
 
     const isInCart = (id) => {
         return carrito.some((item) => item.id === id);
@@ -112,11 +55,6 @@ const CustomProvider = (props) => {
         eliminarProducto,       
         vaciarCarrito,
         precioTotal,
-        handleChangeNombre,
-        handleChangeApellido,
-        handleChangeEmail,
-        handleChangeTelefono,
-        handleConfirm,
     }
     
     return(
