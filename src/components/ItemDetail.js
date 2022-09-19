@@ -12,22 +12,26 @@ function ItemDetail({item}) {
 }
 
   return (
-    <div className='detailContainer '>
-          <div className='d-flex'>
-              <img src={item.image} alt={item.title} />
-              <div>
-                <h6>{item.title}</h6>
-                
-                <p>${item.price}</p>
-                <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+    <>
+      <div className="sm:py-12 d-flex md:flex-row py-4 w-full flex-1 flex-col my-0 mx-auto detailContainer">
+          <div className="w-full md:w-1/2 h-120 flex flex-1 bg-light hover:bg-light-200">
+            <div className="py-16 p10 flex flex-1 justify-center items-center">
+              <img src={item.image} alt="Inventory item" width="600" className="img-fluid" />
+            </div>
+          </div>
+          <div className="pt-2 px-0 md:px-10 pb-8 dataDetail md:w-1/2">
+              <h3 className="m-2 sm:mt-0 mt-2 text-5xl font-light leading-large">{item.title}</h3>
+              <h4 className="text-2xl tracking-wide m-2 sm:py-8 py-6">${item.price}</h4>
+              <div className="my-3">
+                <ItemCount stock={item.stock} onAdd={onAdd} />
               </div>
-              <div>
-                <p>{item.description}</p>
-              </div>
-               
           </div>
       </div>
-  )
+      <div className='descriptionContainerDetail'>
+        <p className="m-2 textDetail">{item.description}</p>
+      </div>
+    </>
+  );
 }
 
 export default ItemDetail

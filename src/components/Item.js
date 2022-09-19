@@ -8,7 +8,6 @@ const Item = ({ producto }) => {
           <img src={producto.image} alt={producto.title} className='bd-placeholder-img img-fluid card-img-top' width='100%'/>
           <div className='m-3'>
             <h6>{producto.title}</h6>
-            <p className='card-text'>{producto.description}</p>
             <strong>${producto.price}</strong>
           </div> 
           <div className='btn-group'>
