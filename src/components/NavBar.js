@@ -12,27 +12,26 @@ const NavBar = ({type}) => {
             <>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="navbar-nav nav me-auto mb-2 mb-md-0">
-                        <Nav.Link href="/" className="nav-link px-2 link-dark">Home</Nav.Link>
-                        <NavDropdown title="Productos" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="/ruta" className="nav-link px-2 link-dark">Bicicletas de Ruta</NavDropdown.Item>
-                            <NavDropdown.Item href="/paseo" className="nav-link px-2 link-dark">Bicicletas de Paseo</NavDropdown.Item>
-                            <NavDropdown.Item href="/montaña" className="nav-link px-2 link-dark">Bicicletas de Montaña</NavDropdown.Item>
+                        <Nav.Link><Link to="/" className="nav-link px-2 link-dark">Home</Link></Nav.Link>
+                        <NavDropdown title="Productos" className="nav-link link-dark" id="collasible-nav-dropdown">
+                            <NavDropdown.Item><Link to="/ruta" className="nav-link link-dark">Bicicletas de Ruta</Link></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/paseo" className="nav-link px-2 link-dark">Bicicletas de Paseo</Link></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/montana" className="nav-link px-2 link-dark">Bicicletas de Montaña</Link></NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="/nosotros" className="nav-link px-2 link-dark">Nosotros</Nav.Link>
-                        <Nav.Link href="/contacto" className="nav-link px-2 link-dark">Contacto</Nav.Link>
-                        <Nav.Link href="/ayuda" className="nav-link px-2 link-dark">Ayuda</Nav.Link>
+                        <Nav.Link><Link to="/nosotros" className="nav-link px-2 link-dark">Nosotros</Link></Nav.Link>
+                        <Nav.Link><Link to="/contacto" className="nav-link px-2 link-dark">Contacto</Link></Nav.Link>
+                        <Nav.Link><Link to="/ayuda" className="nav-link px-2 link-dark">Ayuda</Link></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <CartWidget />
-                </>
+            </>
         )
     }else{
         return (
             <div className="navbar navbar-expand-lg " aria-label="Eighth navbar example">
                 <div className="collapse navbar-collapse" id="navbarsExample07">
                     <ul className="navbar-nav me-auto mb-2 mb-md-0 ">
-                        <li><Link to="/home" className="nav-link px-2 link-dark">Home</Link></li>
-                        <li><Link to="/productos" className="nav-link px-2 link-dark">Productos</Link></li>
+                        <li><Link to="/" className="nav-link px-2 link-dark">Home</Link></li>
                         <li><Link to="/nosotros" className="nav-link px-2 link-dark">Nosotros</Link></li>
                         <li><Link to="/contacto" className="nav-link px-2 link-dark">Contacto</Link></li>
                         <li><Link to="/ayuda" className="nav-link px-2 link-dark">Ayuda</Link></li>
