@@ -11,8 +11,6 @@ const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
     const { category } = useParams()
-
-    console.log("categoria:"+category)
     
     useEffect(() => {
 
@@ -32,9 +30,6 @@ const ItemListContainer = () => {
                     setProductos(productos)
                     setLoading(false)
                 })
-                .catch(err=>{
-                    console.log(err)
-                })
         }else{
             const filtro = query(productosCollection, where("category","==",category))
             const consulta = getDocs(filtro)
@@ -51,29 +46,13 @@ const ItemListContainer = () => {
                     setProductos(productos)
                     setLoading(false)
                 })
-                .catch(err=>{
-                    console.log(err)
-                })
         }
 }, [category])
-    
-    if (loading) {
-        return (
-            <>
-                <p>Cargando...</p>
-                
-            </>
-        )
-    } else {
-        return (
-            <div className="album py-5 bg-light">
-                <div className="container-sm container-md">
-                    <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
-                        <ItemList productos={productos} />
-                    </div>
-                </div>
-            </div>
-        )
-    }
+
+
+    return (
+        loading ? <p>Cargando...</p> : <ItemList productos={productos}/>
+    )
+   
 }
 export default ItemListContainer

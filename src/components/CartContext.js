@@ -15,7 +15,6 @@ const CustomProvider = (props) => {
     const [nombre, setNombre] = useState("");
     const [apellido, setApellido] = useState("");
     const nombreCompleto = `${nombre} ${apellido}`;
-
     const [email, setEmail] = useState("");
     const [telefono, setTelefono] = useState("");
     const [cantidad, setCantidad] = useState(0);
@@ -27,18 +26,21 @@ const CustomProvider = (props) => {
         const input = e.target
         const value = input.value
         setNombre(value)
+        console.log(nombre)
     }
 
     const handleChangeApellido = (e) => {
         const input = e.target
         const value = input.value
         setApellido(value)
+        console.log(apellido)
     }
 
     const handleChangeEmail = (e) => {
         const input = e.target
         const value = input.value
         setEmail(value)
+        console.log(email)
     }
 
     const handleChangeTelefono = (e) => {
@@ -64,16 +66,10 @@ const CustomProvider = (props) => {
 
         consulta
             .then((res)=>{
-            console.log(res);    
             })
             .catch(error => {
-            console.log(error)
             })
     }
-
-    // /////////////////////////////////
-    // ************ CARRITO ************
-    // /////////////////////////////////
 
     const isInCart = (id) => {
         return carrito.some((item) => item.id === id);
