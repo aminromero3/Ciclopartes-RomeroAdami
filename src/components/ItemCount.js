@@ -2,52 +2,41 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, onAdd }) => {
 
-    const [contador, setContador] = useState(0)
-    
-    initial = 1;
+    const [contador, setContador] = useState(1)
 
     const sumar = () => {
         if (stock === 0 || contador === stock) {
-            console.log("No se puede incrementar");
-        } else {
+            setContador(contador)
+            } else {
             setContador(contador + 1)
-            console.log("incrementando");
-            console.log(contador+1);
         }
-    };
+    }
 
     const restar = () => {
-        if (contador === 0) {
-            console.log("No se puede decrementar");
-        } else {
-            setContador(contador - 1)
-            console.log("decrementando");
-            console.log(contador);
-        }
-    };
-
+        contador === 1 ? setContador(contador) : setContador(contador - 1)       
+    }
     const agregarAlCarrito = () => {
-        console.log("se agrego al carrito");
         onAdd(contador)
     }
 
-    const comprar = () =>{
-        console.log("se compro "+contador+"elementos");
-        onAdd(contador)
-        
-    }
     return (
-        <div className="container d-flex ">
-            <button className="btn btn-outline-secondary" onClick={restar}>-</button>
-            <p className="m-2">cantidad: {contador}</p>
-            <button className="btn btn-outline-secondary" onClick={sumar}>+</button>
-            {/* Si el contador es mayor a 0, mostraremos un boton para terminar la compra */}
-            {contador > 0 ? <button className="btn btn-outline-secondary" onClick={agregarAlCarrito}>Agregar al carrito</button>: null}
-            {contador > 0 ? <Link to="/cart"><button className="btn btn-outline-secondary" onClick={comprar}>Terminar compra</button></Link> : null}
+        <div className="container itemCount">
+            <div className="m-2">
+                <button className=" w-10 h-10 text-2xl md:w-8 md:h-8 md:text-sm cursor-pointer text-center border pb-.5hover:bg-gray-900 hover:text-white focus:outline-none" onClick={restar}>-</button>
+                <small className="m-2">Cantidad: {contador}</small>
+                <button className="w-10 h-10 text-2xl md:w-8 md:h-8 md:text-sm cursor-pointer text-center border pb-.5hover:bg-gray-900 hover:text-white focus:outline-none" onClick={sumar}>+</button>
+            </div>
+            <div>
+                <Link to="/cart"><button className="buttonBuy m-2" onClick={agregarAlCarrito}>Comprar ahora</button></Link>
+            </div>
+            <div>
+                <button className="buttonAddToCart m-2" onClick={agregarAlCarrito}>Agregar al carrito</button>
+            </div>
+            
         </div>
-    );
-};
+    )
+}
 
 export default ItemCount;

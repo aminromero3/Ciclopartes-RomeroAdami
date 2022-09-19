@@ -6,15 +6,14 @@ import { NavLink } from "react-router-dom";
 function CartWidget() {
 
     const { cantidad } = useCarrito();
-    console.log(cantidad);
     
     if(cantidad > 0) {
         return (
             <NavLink to="/cart">
-            <span className="material-symbols-outlined">
-                shopping_cart
-            </span> 
-            {cantidad}
+                <span className="material-symbols-outlined">
+                    shopping_cart
+                </span> 
+                {cantidad}
             </NavLink>
         )
     }
