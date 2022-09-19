@@ -19,7 +19,6 @@ const NavBar = ({type}) => {
                             <NavDropdown.Item><Link to="/montana" className="nav-link px-2 link-dark">Bicicletas de Montaña</Link></NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link><Link to="/nosotros" className="nav-link px-2 link-dark">Nosotros</Link></Nav.Link>
-                        <Nav.Link><Link to="/contacto" className="nav-link px-2 link-dark">Contacto</Link></Nav.Link>
                         <Nav.Link><Link to="/ayuda" className="nav-link px-2 link-dark">Ayuda</Link></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
@@ -32,8 +31,8 @@ const NavBar = ({type}) => {
                 <div className="collapse navbar-collapse" id="navbarsExample07">
                     <ul className="navbar-nav me-auto mb-2 mb-md-0 ">
                         <li><Link to="/" className="nav-link px-2 link-dark">Home</Link></li>
+                        <li><Link to="/products" className="nav-link px-2 link-dark">Productos</Link></li>
                         <li><Link to="/nosotros" className="nav-link px-2 link-dark">Nosotros</Link></li>
-                        <li><Link to="/contacto" className="nav-link px-2 link-dark">Contacto</Link></li>
                         <li><Link to="/ayuda" className="nav-link px-2 link-dark">Ayuda</Link></li>
                     </ul>
                 </div>
